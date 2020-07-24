@@ -3,7 +3,7 @@ let dbFile;
 let state;
 let i = 0;
 
-let joke = ['Oh my god, I love tea', 'Is there anything better than Tea?', 'Guys, Guys, Guys Tea!', 'Holy Shit tea time is coming', 'This is to much I can hardly wait', 'Earl Grey', 'Peppermint', 'English Breakfast', 'Tea, Tea, Tea!', 'Hot Water + Sugar + Teabag = Amazing']
+let joke = ['Oh my god, I love tea', 'Is there anything better than Tea?', 'Guys, Guys, Guys Tea!', 'Holy Shit tea time is coming', 'This is to much I can hardly wait', 'Earl Grey', 'Peppermint', 'English Breakfast', 'Tea, Tea, Tea!', 'Hot Water + Sugar + Teabag = Amazing', 'Please I need tea!', 'Give me Tea and I will marry you!', 'Mr T knows what he wants', 'I want an Avagadros constant worth of Tea', 'With Milk or Without?', 'To Tea or Not to Tea?', 'Warm, sweet, delicious. Tea.', 'If its Tea you want, its tea you will get', 'Tea keeps on falling on my head', 'You have my Sword! and my Tea!', 'Herbal Vs White. Showdown! FIGHT!']
 
 let j = 0;
 
