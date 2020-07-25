@@ -1,26 +1,34 @@
 let startDate;
-let dbFile;
 let state;
 let i = 0;
+let j = 0;
+let rndJoke;
+let img;
+let teaDrops = [];
 
 let joke = ['Oh my god, I love tea', 'Is there anything better than Tea?', 'Guys, Guys, Guys Tea!', 'Holy Shit tea time is coming', 'This is to much I can hardly wait', 'Earl Grey', 'Peppermint', 'English Breakfast', 'Tea, Tea, Tea!', 'Hot Water + Sugar + Teabag = Amazing', 'Please I need tea!', 'Give me Tea and I will marry you!', 'Mr T knows what he wants', 'I want an Avagadros constant worth of Tea', 'With Milk or Without?', 'To Tea or Not to Tea?', 'Warm, sweet, delicious. Tea.', 'If its Tea you want, its tea you will get', 'Tea keeps on falling on my head', 'You have my Sword! and my Tea!', 'Herbal Vs White. Showdown! FIGHT!']
-
-let j = 0;
-
-let rndJoke;
 
 
 //Confetti
 let confettiColor = [], confetti = [];
 
-/*
-var xhr = new XMLHttpRequest();
-xhr.open("POST", 'http://db.originalone.cloud/api/highscores/add', true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send(JSON.stringify({
-name: 'time', score: '8', game: 'test'
-}));
-*/
+function drawMain(TimeCounter){
+    image(img, width*0.4, height*0.4, 1000, 1000)
+        fill(0);
+        
+        textSize(50);
+        text(Math.floor(TimeCounter)  + ' Minutes  ' + Math.floor(((TimeCounter) - (Math.floor(TimeCounter))) * 60) + ' Seconds', width*0.10, height*0.45);
+        textSize(25);
+        text(joke[rndJoke], width*0.10, height*0.6);
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+  }
+
+function preload() {
+  img = loadImage('assets/teaCup.jpg');
+}
 
 function setup() {
 
@@ -32,6 +40,15 @@ function setup() {
     confettiColor = [color('#00aeef'), color('#ec008c'), color('#72c8b6')];
     for (let i = 0; i < 100; i++) {
      confetti[i] = new Confetti(random(0, width), random(-height, 0), random(-1, 1));
+    }
+    teaDrop = new teaLiquid(width*0.72, 0);
+
+    
+
+    for(let a = 0; a < 300; a++){
+        let x_ = Math.floor(Math.random() * (width*0.8)) + (width*0.6)
+        
+        teaDrops.push(new teaLiquid(x_, 0))
     }
     
 }
@@ -50,6 +67,10 @@ function draw() {
 
 
     background(255);
+    textSize(22);
+    fill(0);
+    text('Tea Time Countdown', width*0.01, height*0.05);
+
     currentDate = new Date();
 
     
@@ -67,12 +88,12 @@ function draw() {
 
     let RemoveMinutes = (NumberOfHours) * 60;
     
-    let TimeCounter = TimeSinceMinutes - RemoveMinutes;
+    let TimeCounter = 60 - ( TimeSinceMinutes - RemoveMinutes);
 
     
-    if((60 - TimeCounter) < 5){
+    if(TimeCounter < 5){
         state = 'closeTo';
-    } else if((60 - TimeCounter) > 55){
+    } else if(TimeCounter > 55){
         state = 'teaTime';
     } else {
         state = 'normal';
@@ -83,30 +104,23 @@ function draw() {
     }
     
     if(state == 'normal'){
-        fill(0);
-        textSize(30);
-        text('Tea Time Countdown', width*0.38, height*0.1);
         textSize(40);
-        text('Tea Time in:', width*0.4, height*0.3);
-        textSize(50);
-        text(60 - Math.floor(TimeCounter)  + ' Minutes', width*0.29, height*0.45);
-        text(60 - Math.floor(((TimeCounter) - (Math.floor(TimeCounter))) * 60) + ' Seconds', width*0.48,height*0.45)
-        textSize(25);
-        text(joke[rndJoke], width*0.32, height*0.6);
+        text('Tea Time in:', width*0.10, height*0.3);
+        drawMain(TimeCounter);
+
+        /*for(let a = 0; a < teaDrops.length; a++){
+            teaDrops[a].draw();
+            teaDrops[a].move();
+        }*/
 
     }
     
     if(state == 'closeTo'){
-        fill(0);
-        textSize(30);
-        text('Tea Time Countdown', width*0.38, height*0.1);
         textSize(40);
-        text('Get Excited Gentlemen!!', width*0.33, height*0.3);
-        textSize(50);
-        text(60 - Math.floor(TimeCounter)  + ' Minutes', width*0.31, height*0.45);
-        text(60 - Math.floor(((TimeCounter) - (Math.floor(TimeCounter))) * 60) + ' Seconds', width*0.48,height*0.45)
-        textSize(25);
-        text(joke[rndJoke], width*0.32, height*0.6);
+        text('Get Excited Gentlemen!!', width*0.10, height*0.3);
+        drawMain(TimeCounter)
+        
+        
     }
 
     if(state == 'teaTime'){
