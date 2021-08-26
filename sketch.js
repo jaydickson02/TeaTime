@@ -16,7 +16,7 @@ let joke = ['Oh my god, I love tea', 'Is there anything better than Tea?', 'Guys
 let confettiColor = [], confetti = [];
 
 function drawMain(TimeCounter){
-        //image(img, width*0.4, height*0.4, 1000, 1000)
+        image(img, width*0.4, height*0.4, 1000, 1000)
         fill(0);
         
         textSize(50);
@@ -29,9 +29,9 @@ function windowResized() {
     resizeCanvas(windowWidth, windowHeight);
   }
 
-// function preload() {
-//     img = loadImage('assets/teaCup.jpg');
-// }
+function preload() {
+    img = loadImage('assets/teaCup.jpg');
+}
 
 function setup() {
 
