@@ -19,9 +19,9 @@ function drawMain(TimeCounter){
         image(img, width*0.4, height*0.4, 1000, 1000)
         fill(0);
         
-        textSize(50);
+        textSize(windowWidth * 0.05);
         text(Math.floor(TimeCounter) + ' Hours  ' + Math.floor((TimeCounter - Math.floor(TimeCounter)) * 60)  + ' Minutes  ' + Math.floor(((TimeCounter * 60) - (Math.floor(TimeCounter * 60))) * 60) + ' Seconds', width*0.10, height*0.45);
-        textSize(25);
+        textSize(windowWidth * 0.02);
         text(joke[rndJoke], width*0.10, height*0.6);
 }
 
@@ -40,7 +40,7 @@ function setup() {
     variance = getItem('variance');
 
     sel = createSelect();
-    sel.position(windowWidth * 0.85, 10);
+    sel.position(windowWidth - 120, 10);
     sel.option('One Hour');
     sel.option('Two Hours');
     sel.option('Three Hours');
@@ -67,7 +67,7 @@ function setup() {
     if(storedTime === null){
 
         currentDate = new Date().getTime();
-        dateToStore = (currentDate/(1000*60*60)) + variance
+        dateToStore = (currentDate/(1000*60*60)) + variance;
 
         storeItem('time', dateToStore)
     }
@@ -196,7 +196,7 @@ function draw() {
     }
     
     if(state == 'normal'){
-        textSize(40);
+        textSize(windowWidth * 0.035);
         text('Tea Time in:', width*0.10, height*0.3);
         drawMain(TimeCounter);
 
