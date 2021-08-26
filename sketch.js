@@ -208,14 +208,14 @@ function draw() {
     }
     
     if(state == 'closeTo'){
-        textSize(40);
+        textSize(windowWidth * 0.035);
         text('OMG Get Excited PEOPLE!!', width*0.10, height*0.3);
         drawMain(TimeCounter)
         
     }
 
     if(state == 'teaTime'){
-        textSize(60);
+        textSize(windowWidth * 0.05);
 
         if(i > 15){
             fill(0)
