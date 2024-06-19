@@ -85,7 +85,7 @@ function mySelectEvent() {
 
     switch(timeInterval) {
         case 'One Minute':
-          variance = 0.017;
+          state = 'teaTime'
           break;
         case 'One Hour':
           variance = 1;
