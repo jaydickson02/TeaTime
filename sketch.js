@@ -41,6 +41,7 @@ function setup() {
 
     sel = createSelect();
     sel.position(windowWidth - 120, 10);
+    sel.option('One Minute');
     sel.option('One Hour');
     sel.option('Two Hours');
     sel.option('Three Hours');
