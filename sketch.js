@@ -83,6 +83,9 @@ function mySelectEvent() {
     currentDate = new Date().getTime();
 
     switch(timeInterval) {
+        case 'One Minute':
+          variance = 0.017;
+          break;
         case 'One Hour':
           variance = 1;
           break;
